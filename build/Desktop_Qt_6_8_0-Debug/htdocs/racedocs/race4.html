@@ -6,6 +6,8 @@
     <title> Race 4 - Arcade</title>
 
     <link rel="stylesheet" href="/racedocs/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
 
     <link rel="shortcut icon" href="htdocs/img/ArcadeLogo.png" type="image/x-icon">
 
@@ -17,8 +19,26 @@
 
     <canvas id="gameCanvas"></canvas>
 
+    <a href="http://localhost:8080/" class="botonBack"><i class="fas fa-arrow-left"></i></a>
+
     <div class="TextInstruct">
-        <p class="textGametitle"> I N S T R U C C I O N E S</p>
+        
+        <div class="instructions-container">
+            <div class="instructions">
+                <div class="keys">
+                    <img src="img/mouse.png" class="key-img">
+                    <p>Seleccionar</p>
+                </div>
+            </div>
+        
+            <div class="instructions">
+                <div class="keys">
+                    <img src="img/arrows.png" class="key-img">
+                    <p>Movimiento</p>
+                </div>
+            </div>
+        </div>
+         
     </div>
 
     <script src="/racedocs/game.js"></script>

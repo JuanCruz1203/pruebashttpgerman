@@ -19,8 +19,8 @@ html, body {
     flex-direction: column;
 }
 
-#game {
-    background-image: url(htdocs/img/pasto.jpg);
+#gameCanvas{
+    background-image: url(/htdocs/img/pasto.jpg);
 }
 
 
@@ -28,18 +28,53 @@ canvas {
     border: 1px solid white;
 }
 
-.TextInstruct {
-    width: 100%;
-    height: auto;
-    background-color: rgb(51, 13, 121);
+.botonBack {
+    position : absolute;
+    top: 15px;
+    left: 15px;
+    width: 60px;
+    height: 40px;
+    background-color: tomato;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    bottom: 20px;
-    font-family: "Bangers", system-ui;
-    font-weight: 400;
-    font-style: normal;
-    color: #fff;
+    border-radius: 15%;
+    pointer-events: auto;
+    z-index: 9999;
 
+}
+
+.instructions-container {
+    display: flex; 
+    justify-content: center; 
+    gap: 30px; 
+}
+
+.instructions{
+    border: 5px solid;
+    border-color:white;
+    border-radius: 15px;
+    padding: 5px;
+    margin-top: 90px;
+    display: flex;
+    font-family: 'Press Start 2P', cursive; 
+    color:white;
+    justify-content: center;
+    
+
+}
+
+.keys{
+    
+    display: flex;
+    justify-content: center;
+    left: 100px;
+    align-items: center;
+
+}
+
+.key-img{
+    width:100px;
+    height:auto;
+    margin-right: 50px;
 }
