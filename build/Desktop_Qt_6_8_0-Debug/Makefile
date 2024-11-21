@@ -975,6 +975,7 @@ moc_mainwindow.cpp: ../../mainwindow.h \
 		../../../../Qt/6.8.0/gcc_64/include/QtCore/QTextStream \
 		../../../../Qt/6.8.0/gcc_64/include/QtCore/QDebug \
 		../../../../Qt/6.8.0/gcc_64/include/QtCore/QRegularExpression \
+		../../../../Qt/6.8.0/gcc_64/include/QtCore/QMutex \
 		../../../../Qt/6.8.0/gcc_64/include/QtNetwork/QTcpServer \
 		../../../../Qt/6.8.0/gcc_64/include/QtNetwork/qtcpserver.h \
 		../../../../Qt/6.8.0/gcc_64/include/QtNetwork/qtnetworkglobal.h \
@@ -1617,6 +1618,7 @@ main.o: ../../main.cpp ../../mainwindow.h \
 		../../../../Qt/6.8.0/gcc_64/include/QtCore/QTextStream \
 		../../../../Qt/6.8.0/gcc_64/include/QtCore/QDebug \
 		../../../../Qt/6.8.0/gcc_64/include/QtCore/QRegularExpression \
+		../../../../Qt/6.8.0/gcc_64/include/QtCore/QMutex \
 		../../../../Qt/6.8.0/gcc_64/include/QtNetwork/QTcpServer \
 		../../../../Qt/6.8.0/gcc_64/include/QtNetwork/qtcpserver.h \
 		../../../../Qt/6.8.0/gcc_64/include/QtNetwork/qtnetworkglobal.h \
@@ -1854,6 +1856,7 @@ mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../Qt/6.8.0/gcc_64/include/QtCore/QTextStream \
 		../../../../Qt/6.8.0/gcc_64/include/QtCore/QDebug \
 		../../../../Qt/6.8.0/gcc_64/include/QtCore/QRegularExpression \
+		../../../../Qt/6.8.0/gcc_64/include/QtCore/QMutex \
 		../../../../Qt/6.8.0/gcc_64/include/QtNetwork/QTcpServer \
 		../../../../Qt/6.8.0/gcc_64/include/QtNetwork/qtcpserver.h \
 		../../../../Qt/6.8.0/gcc_64/include/QtNetwork/qtnetworkglobal.h \

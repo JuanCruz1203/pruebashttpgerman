@@ -4,6 +4,9 @@ const ctx = canvas.getContext("2d");
 
 canvas.width = 500;
 canvas.height = 600;
+let gameOver = false;
+let score = 0; 
+let bestScore = 0; // mejor puntaje registrado
 
 //clase para hacer la manzana
 
@@ -37,9 +40,79 @@ class apple {
                 x: Math.floor(Math.random() * (canvas.width - this.radio * 2) + this.radio),
                 y: Math.floor(Math.random() * (canvas.height - this.radio * 2) + this.radio)
             }
-    }
+            snake.agregarCabeza();
+            score++;
+        }
     }
 }
+
+
+async function sendBestScoreToServer(bestScore) {
+    try {
+        // obtener los mejores puntajes actuales desde el servidor
+        const response = await fetch(`${serverUrl}/htdocs/records.json`);
+        let data = await response.json();
+
+        // agregar el nuevo puntaje al array
+        data.topScores.push({ puntuacion: bestScore, fecha: new Date().toISOString() });
+
+        // ordenar los puntajes de mayor a menor
+        data.topScores.sort((a, b) => b.puntuacion - a.puntuacion);
+
+        // limitar a los 5 mejores puntajes
+        data.topScores = data.topScores.slice(0, 5);
+
+        // envia los puntajes actualizados al servidor
+        const updateResponse = await fetch(`${serverUrl}/htdocs/records.json`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data) 
+        });
+
+        const updateData = await updateResponse.json();
+        console.log(updateData);
+    } catch (error) {
+        console.error('Error al enviar la mejor puntuación:', error);
+    }
+}
+
+
+
+async function loadTopScores() {
+    try {
+        
+        const response = await fetch(`${serverUrl}/htdocs/records.json`);
+        const data = await response.json();
+
+        
+        displayTopScores(data.topScores);
+    } catch (error) {
+        console.error('Error al cargar los puntajes:', error);
+    }
+}
+
+// para mostrar los puntajes en la página
+function displayTopScores(topScores) {
+    const scoreList = document.getElementById('topScoresList');
+    
+    // Limpiar el contenedor antes de agregar los puntajes
+    scoreList.innerHTML = '';
+
+    // Mostrar los 5 mejores puntajes
+    topScores.forEach((score, index) => {
+        const scoreItem = document.createElement('div');
+        scoreItem.classList.add('score-item');
+        scoreItem.textContent = `Top ${index + 1}: ${score.puntuacion} puntos (Fecha: ${new Date(score.fecha).toLocaleString()})`;
+        scoreList.appendChild(scoreItem);
+    });
+}
+
+// función para cargar los puntajes al iniciar
+loadTopScores();
+
+
 
 // clase para hacer que el cuerpo siga a la cabeza
 
@@ -82,19 +155,20 @@ class snake {
             D: false
         };
         this.tecladoPulse();
+        this.direccion = { x: 1, y: 0 };
         
     }
 
     InicioJuego() {
         for(let i = 0; i < 3; i++) {
-          let path = [];
-          for(let j = 0; j < 12; j++) {
+            let path = [];
+            for(let j = 0; j < 12; j++) {
             path.push({
-              x:this.posicion.x,
-              y:this.posicion.y
+            x:this.posicion.x,
+            y:this.posicion.y
             })
-          }
-          this.body.push(new CuerpoSnake(this.radio, this.color, this.contexto, path));
+        }
+        this.body.push(new CuerpoSnake(this.radio, this.color, this.contexto, path));
         }
         this.dibujoCuerpo(); 
       } 
@@ -108,6 +182,18 @@ class snake {
 
     }
 
+    agregarCabeza() {
+        let path = [];
+        for(let j = 0; j < 5; j++) {
+            path.push({
+            // accedemos al ultimo lugar del cuerpo para agregar el nuevo cuerpo
+            x:this.body.slice(-1)[0].path.slice(-1)[0].x,
+            y:this.body.slice(-1)[0].path.slice(-1)[0].y
+            })
+        }
+        this.body.push(new CuerpoSnake(this.radio, this.color, this.contexto, path));
+        }
+    
     dibujoCabeza () {
         this.dibujoCirculo(this.posicion.x, this.posicion.y,this.radio, this.color);
 
@@ -132,7 +218,9 @@ class snake {
             this.rotacion += 0.04;        }
         this.posicion.x += Math.cos(this.rotacion) * this.velocidad;
         this.posicion.y += Math.sin(this.rotacion) * this.velocidad;
+
         
+        this.colision();
         
     }
 
@@ -167,10 +255,12 @@ class snake {
         document.addEventListener("keydown", (e) => {
             if(e.key == 'a' || e.key == 'A' || e.key == 'ArrowLeft' ) {
                 this.teclas.A = true;
+                this.direccion = { x: -1, y: 0 };
                 
             }
             if(e.key == 'd' || e.key == 'D' || e.key == 'ArrowRight') {
                 this.teclas.D = true;
+                this.direccion = { x: 1, y: 0 };
                 
             }
         })
@@ -186,11 +276,46 @@ class snake {
             }
         })
     }
+
+    colision() {
+        if (this.posicion.x + this.radio > canvas.width) {
+            this.posicion.x = 0 + this.radio; // Teletransportar al borde izquierdo
+        } 
+        if (this.posicion.x - this.radio < 0) {
+            this.posicion.x = canvas.width - this.radio; // Teletransportar al borde derecho
+        }
+        if (this.posicion.y + this.radio > canvas.height) {
+            this.posicion.y = 0 + this.radio; // Teletransportar al borde superior
+        }
+        if (this.posicion.y - this.radio < 0) {
+            this.posicion.y = canvas.height - this.radio; // Teletransportar al borde inferior
+        }
+        for (let i = 0; i < this.path-1; i++){
+            if(this.posicion.y + this.radio === this.body.slice(-1)[i].path.y
+              && this.posicion.x + this.radio === this.body.slice(-1)[i].path.x){
+                gameOver = true;
+              }
+        }
+    }
+}
+
+function endGame() {
+    gameOver = true;  // El juego terminó
+    console.log('Fin del juego. Puntaje final:', score);
+
+    if (score > bestScore) {
+        bestScore = score;
+        console.log('Nuevo mejor puntaje:', bestScore);
+
+        // Enviar el mejor puntaje al servidor
+        sendBestScoreToServer(bestScore);
+    }
+    loadTopScores();  
 }
 
 // creamos una instancia de la mismisima clase snake
 
-const SnakeFrost = new snake({x: 100, y: 100}, 13, 2, "#ff0094", ctx);
+const SnakeFrost = new snake({x: 100, y: 100}, 12, 2, "#ff0094", ctx);
 SnakeFrost.InicioJuego();
 const manzanaFood = new apple({x: 100, y: 100}, 8, "red", ctx);
 
@@ -215,10 +340,12 @@ function fondoSnake() {
 }
 
 function InitGame() {
-    fondoSnake();
-    SnakeFrost.actualizar();
-    manzanaFood.dibujo();
-    manzanaFood.colision(SnakeFrost);
-    requestAnimationFrame(InitGame);
+    if(!gameOver){
+        fondoSnake();
+        SnakeFrost.actualizar();
+        manzanaFood.dibujo();
+        manzanaFood.colision(SnakeFrost);
+        requestAnimationFrame(InitGame);
+    }
 }
 InitGame(); 

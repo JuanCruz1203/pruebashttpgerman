@@ -42,7 +42,6 @@ constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers::string
     "onClientDisconnect",
     "writeLogFile",
     "on_OpenPortBttn_clicked",
-    "updateRace4State",
     "onClientReqstGET",
     "route",
     "QTcpSocket*",
@@ -65,7 +64,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -73,16 +72,15 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   74,    2, 0x08,    1 /* Private */,
-       3,    0,   75,    2, 0x08,    2 /* Private */,
-       4,    0,   76,    2, 0x08,    3 /* Private */,
-       5,    0,   77,    2, 0x08,    4 /* Private */,
-       6,    0,   78,    2, 0x08,    5 /* Private */,
-       7,    0,   79,    2, 0x08,    6 /* Private */,
-       8,    2,   80,    2, 0x08,    7 /* Private */,
-      12,    3,   85,    2, 0x08,   10 /* Private */,
-      15,    3,   92,    2, 0x08,   14 /* Private */,
-      17,    1,   99,    2, 0x08,   18 /* Private */,
+       1,    0,   68,    2, 0x08,    1 /* Private */,
+       3,    0,   69,    2, 0x08,    2 /* Private */,
+       4,    0,   70,    2, 0x08,    3 /* Private */,
+       5,    0,   71,    2, 0x08,    4 /* Private */,
+       6,    0,   72,    2, 0x08,    5 /* Private */,
+       7,    2,   73,    2, 0x08,    6 /* Private */,
+      11,    3,   78,    2, 0x08,    9 /* Private */,
+      14,    3,   85,    2, 0x08,   13 /* Private */,
+      16,    1,   92,    2, 0x08,   17 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -90,11 +88,10 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void, QMetaType::QString, 0x80000000 | 10,    9,   11,
-    QMetaType::Void, QMetaType::QString, 0x80000000 | 10, QMetaType::QByteArray,   13,   11,   14,
-    QMetaType::Void, QMetaType::QString, 0x80000000 | 10, 0x80000000 | 16,   13,   11,   14,
-    QMetaType::Void, 0x80000000 | 10,   11,
+    QMetaType::Void, QMetaType::QString, 0x80000000 | 9,    8,   10,
+    QMetaType::Void, QMetaType::QString, 0x80000000 | 9, QMetaType::QByteArray,   12,   10,   13,
+    QMetaType::Void, QMetaType::QString, 0x80000000 | 9, 0x80000000 | 15,   12,   10,   13,
+    QMetaType::Void, 0x80000000 | 9,   10,
 
        0        // eod
 };
@@ -117,8 +114,6 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         // method 'writeLogFile'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_OpenPortBttn_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'updateRace4State'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'onClientReqstGET'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
@@ -152,16 +147,22 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 2: _t->onClientDisconnect(); break;
         case 3: _t->writeLogFile(); break;
         case 4: _t->on_OpenPortBttn_clicked(); break;
-        case 5: _t->updateRace4State(); break;
-        case 6: _t->onClientReqstGET((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QTcpSocket*>>(_a[2]))); break;
-        case 7: _t->onClientReqstPOST((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QTcpSocket*>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QByteArray>>(_a[3]))); break;
-        case 8: _t->onClientReqstPUT((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QTcpSocket*>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QByteArray&>>(_a[3]))); break;
-        case 9: _t->onClientReqstOPTIONS((*reinterpret_cast< std::add_pointer_t<QTcpSocket*>>(_a[1]))); break;
+        case 5: _t->onClientReqstGET((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QTcpSocket*>>(_a[2]))); break;
+        case 6: _t->onClientReqstPOST((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QTcpSocket*>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QByteArray>>(_a[3]))); break;
+        case 7: _t->onClientReqstPUT((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QTcpSocket*>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QByteArray&>>(_a[3]))); break;
+        case 8: _t->onClientReqstOPTIONS((*reinterpret_cast< std::add_pointer_t<QTcpSocket*>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+        case 5:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+            case 1:
+                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QTcpSocket* >(); break;
+            }
+            break;
         case 6:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
@@ -177,13 +178,6 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
             }
             break;
         case 8:
-            switch (*reinterpret_cast<int*>(_a[1])) {
-            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
-            case 1:
-                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QTcpSocket* >(); break;
-            }
-            break;
-        case 9:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
             case 0:
@@ -213,13 +207,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 9;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 10)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 9;
     }
     return _id;
 }

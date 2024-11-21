@@ -11,18 +11,25 @@ body {
 
 }
 
-.botonBack {
-    position : absolute;
-    top: 15px;
-    left: 15px;
-    width: 60px;
-    height: 40px;
-    background-color: tomato;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 15%;
-    pointer-events: auto;
-    z-index: 9999;
+/* Estilo para el contenedor de puntajes */
+#topScoresContainer {
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    background-color: #1B1C30;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    width: 300px;
+    margin: 20px auto;
+}
 
+/* Estilo para la lista de puntajes */
+#topScoresList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#topScoresList li {
+    font-size: 16px;
+    margin: 5px 0;
 }
