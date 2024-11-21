@@ -1,5 +1,6 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
+const serverUrl = 'http://localhost:8080';
 
 
 canvas.width = 500;
@@ -50,7 +51,7 @@ class apple {
 async function sendBestScoreToServer(bestScore) {
     try {
         // obtener los mejores puntajes actuales desde el servidor
-        const response = await fetch(`${serverUrl}/htdocs/records.json`);
+        const response = await fetch(`${serverUrl}/records.json`);
         let data = await response.json();
 
         // agregar el nuevo puntaje al array
@@ -63,7 +64,7 @@ async function sendBestScoreToServer(bestScore) {
         data.topScores = data.topScores.slice(0, 5);
 
         // envia los puntajes actualizados al servidor
-        const updateResponse = await fetch(`${serverUrl}/htdocs/records.json`, {
+        const updateResponse = await fetch(`${serverUrl}/records.json`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -83,7 +84,7 @@ async function sendBestScoreToServer(bestScore) {
 async function loadTopScores() {
     try {
         
-        const response = await fetch(`${serverUrl}/htdocs/records.json`);
+        const response = await fetch(`${serverUrl}/records.json`);
         const data = await response.json();
 
         

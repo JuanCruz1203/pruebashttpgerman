@@ -1,6 +1,6 @@
 Oppenning port 8080...
 Successfully oppened port 8080.
-CONNECTING: ::ffff:127.0.0.1:40408
+CONNECTING: ::ffff:127.0.0.1:45574
 GET / HTTP/1.1
 Host: localhost:8080
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
@@ -67,7 +67,9 @@ Transfer-Encoding: chunked
 Connection: keep-alive
 
 
-CONNECTING: ::ffff:127.0.0.1:40422
+CONNECTING: ::ffff:127.0.0.1:45582
+CONNECTING: ::ffff:127.0.0.1:45592
+CONNECTING: ::ffff:127.0.0.1:45594
 GET /css/wickedcss.min.css HTTP/1.1
 Host: localhost:8080
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
@@ -100,7 +102,6 @@ Transfer-Encoding: chunked
 Connection: keep-alive
 
 
-CONNECTING: ::ffff:127.0.0.1:40434
 GET /js/script.js HTTP/1.1
 Host: localhost:8080
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
@@ -193,9 +194,7 @@ Transfer-Encoding: chunked
 Connection: keep-alive
 
 
-CONNECTING: ::ffff:127.0.0.1:40442
-CONNECTING: ::ffff:127.0.0.1:40456
-GET /img/auto.png HTTP/1.1
+GET /img/serpiente.png HTTP/1.1
 Host: localhost:8080
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
 Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
@@ -209,7 +208,7 @@ Sec-Fetch-Site: same-origin
 Priority: u=5, i
 
 
-GET /img/auto.png HTTP/1.1
+GET /img/serpiente.png HTTP/1.1
 Host: localhost:8080
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
 Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
@@ -227,7 +226,7 @@ Transfer-Encoding: chunked
 Connection: keep-alive
 
 
-GET /img/serpiente.png HTTP/1.1
+GET /img/auto.png HTTP/1.1
 Host: localhost:8080
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
 Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
@@ -241,7 +240,7 @@ Sec-Fetch-Site: same-origin
 Priority: u=5, i
 
 
-GET /img/serpiente.png HTTP/1.1
+GET /img/auto.png HTTP/1.1
 Host: localhost:8080
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
 Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
@@ -353,6 +352,38 @@ Sec-Fetch-Mode: no-cors
 Sec-Fetch-Site: same-origin
 HTTP/1.1 200 OK
 Content-Type: text/javascript
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+GET /records.json HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
+Accept: */*
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br, zstd
+Referer: http://localhost:8080/html/snake.html
+Connection: keep-alive
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Priority: u=4
+
+
+GET /records.json HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
+Accept: */*
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br, zstd
+Referer: http://localhost:8080/html/snake.html
+Connection: keep-alive
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Priority: u=4
+HTTP/1.1 200 OK
+Content-Type: application/json
 Transfer-Encoding: chunked
 Connection: keep-alive
 
@@ -387,10 +418,9 @@ HTTP/1.1 404 Not Found
 Content-Type: text/html
 
 
-DISCONNECTING: ::ffff:127.0.0.1:40408
-DISCONNECTING: ::ffff:127.0.0.1:40422
-DISCONNECTING: ::ffff:127.0.0.1:40456
-DISCONNECTING: ::ffff:127.0.0.1:40442
-DISCONNECTING: ::ffff:127.0.0.1:40434
+DISCONNECTING: ::ffff:127.0.0.1:45594
+DISCONNECTING: ::ffff:127.0.0.1:45574
+DISCONNECTING: ::ffff:127.0.0.1:45582
+DISCONNECTING: ::ffff:127.0.0.1:45592
 Closing port 8080...
 Successfully closed port 8080.

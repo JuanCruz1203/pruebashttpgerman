@@ -8,7 +8,23 @@ body {
     height: 100vh;
     background: rgb(50,59,139);
     background: radial-gradient(circle, rgba(50,59,139,1) 0%, rgba(39,45,85,1) 100%);
+}
 
+/* Estilo para el contenedor principal */
+#gameContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; /* Espacio entre el canvas y el contenedor de puntajes */
+    margin: 0 auto;
+}
+
+/* Estilo para el canvas */
+#canvas {
+    background-color: #000;
+    border-radius: 10px;
+    width: 500px;  /* Ajusta el tamaño según lo necesites */
+    height: 500px; /* Ajusta el tamaño según lo necesites */
 }
 
 /* Estilo para el contenedor de puntajes */
@@ -16,17 +32,29 @@ body {
     font-family: 'Press Start 2P', cursive;
     color: white;
     background-color: #1B1C30;
-    margin-top: 20px;
     padding: 10px;
     border-radius: 5px;
     width: 300px;
-    margin: 20px auto;
+    height: 500px;  /* Mismo alto que el canvas para alinearse bien */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Estilo para el título de los puntajes */
+#topScoresContainer h2 {
+    margin-bottom: 10px;
+    font-size: 18px;
 }
 
 /* Estilo para la lista de puntajes */
 #topScoresList {
     list-style-type: none;
     padding: 0;
+    margin-top: 10px;
+    flex-grow: 1; /* Hace que la lista crezca hacia abajo */
+    overflow-y: auto; /* Permite desplazamiento si la lista es muy larga */
 }
 
 #topScoresList li {
